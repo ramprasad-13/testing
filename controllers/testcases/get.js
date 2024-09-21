@@ -1,4 +1,4 @@
-const TestModel = require('../../models/testCase');
+const TestModel = require('../../models/testcase');
 const { getswaggerData, getEndpoints, generateTestCases } = require('../../updatedCode');
 
 const getTestcase = async (req, res) => {
