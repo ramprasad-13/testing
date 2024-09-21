@@ -3,6 +3,8 @@ const { getswaggerData, getEndpoints, generateTestCases } = require('../../updat
 
 const getTestcase = async (req, res) => {
     const { swaggerUrl } = req.query;
+    const { save } = req.query;
+    
     try {
         if (!swaggerUrl) {
             return res.status(400).json({ error: "swaggerUrl is required" });
@@ -25,9 +27,11 @@ const getTestcase = async (req, res) => {
             return res.status(400).json({ error: "One or more test cases are missing required fields." });
         }
 
-        // Save all test cases in a single document
-        const testcaseDocument = new TestModel({ testCases });
-        await testcaseDocument.save();
+        if(save){
+            // Save all test cases in a single document
+            const testcaseDocument = new TestModel({ testCases });
+            await testcaseDocument.save();
+        }
 
         res.status(200).json(testCases);
     } catch (error) {
