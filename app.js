@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 require('dotenv').config();
 const db = require('./connection');
 const fetchSwaggerData = require('./controllers/swagger/fetch')
